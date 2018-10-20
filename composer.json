@@ -1,5 +1,5 @@
 {
-  "name": "Eloquent Polymorphism Extension",
+  "name": "celinederoland/eloquent-polymorphic-model",
   "description": "Extend eloquent facilities to map one class Hierarchy branch to one table in database",
   "authors": [
     {
@@ -22,6 +22,7 @@
     }
   },
   "require": {
+    "php": "5.6.*",
     "ext-pdo": "*",
     "ext-json": "*",
     "illuminate/database": "*"
