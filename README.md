@@ -135,7 +135,11 @@ You can use all other functionality of Eloquent models like usual. In particular
 
 # Contribute
 
-Fork the project in your github account
+Fork the project in your github account. Init gitflow
+```bash
+git flow init
+git flow feature start feature-name develop
+```
 
 Composer install
 ````bash
@@ -146,4 +150,13 @@ Test
 ```bash
 docker-compose up testunit
 ```
+
+Code
+
+```bash
+git push
+```
+
+Create a merge request from you're release branch to develop
+
 
