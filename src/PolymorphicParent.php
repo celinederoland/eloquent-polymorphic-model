@@ -7,30 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 trait PolymorphicParent {
 
     /**
-     * @param array $attributes
-     *
-     * @return string
-     */
-    protected abstract function instanceFactory($attributes);
-    
-    /**
-     * @return bool
-     */
-    protected function checkHierarchyConstraintsBeforeSaving() {
-
-        $guessFinalClass = $this->instanceFactory($this->getAttributes());
-        return ($guessFinalClass === static::class || is_subclass_of($guessFinalClass, static::class));
-    }
-    
-    /**
-     * Give a name to the scope used to retrieve children instances from database
-     */
-    protected function polymorphismScopeIdentifier() {
-
-        return 'polymorphism_scope_identifier';
-    }
-
-    /**
      * Create a new model instance that is existing.
      *
      * @param  array       $attributes
@@ -40,7 +16,7 @@ trait PolymorphicParent {
      */
     public function newFromBuilder($attributes = [], $connection = null) {
 
-        $class_name    = $this->instanceFactory((array) $attributes);
+        $class_name = $this->instanceFactory((array) $attributes);
         /** @var Model $model */
         $model         = new $class_name();
         $model->exists = true;
@@ -76,12 +52,36 @@ trait PolymorphicParent {
      * @return bool
      */
     public function save($options = []) {
-        
-        if($this->checkHierarchyConstraintsBeforeSaving()) {
+
+        if ($this->checkHierarchyConstraintsBeforeSaving()) {
             /** @noinspection PhpUndefinedClassInspection */
             return parent::save($options);
         }
         return false;
+    }
+
+    /**
+     * @return bool
+     */
+    protected function checkHierarchyConstraintsBeforeSaving() {
+
+        $guessFinalClass = $this->instanceFactory($this->getAttributes());
+        return ($guessFinalClass === static::class || is_subclass_of($guessFinalClass, static::class));
+    }
+
+    /**
+     * @param array $attributes
+     *
+     * @return string
+     */
+    protected abstract function instanceFactory($attributes);
+
+    /**
+     * Give a name to the scope used to retrieve children instances from database
+     */
+    protected function polymorphismScopeIdentifier() {
+
+        return 'polymorphism_scope_identifier';
     }
 
 }
