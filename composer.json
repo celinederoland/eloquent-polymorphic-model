@@ -1,0 +1,33 @@
+{
+  "name": "Eloquent Polymorphism Extension",
+  "description": "Extend eloquent facilities to map one class Hierarchy branch to one table in database",
+  "authors": [
+    {
+      "name": "Céline de Roland"
+    }
+  ],
+  "version": "0.1",
+  "autoload": {
+    "psr-4": {
+      "EloquentPolymorphism\\": [
+        "src/"
+      ]
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "EloquentPolymorphism\\": [
+        "test/"
+      ]
+    }
+  },
+  "require": {
+    "php": "~7.2",
+    "ext-pdo": "*",
+    "ext-json": "*",
+    "illuminate/database": "*"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^7.3"
+  }
+}
