@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-docker-compose run composer composer $@
+docker-compose run --rm composer composer $@
