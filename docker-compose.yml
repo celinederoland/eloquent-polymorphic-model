@@ -20,14 +20,14 @@ services:
     networks:
       - back
 
-  composer:
-    build: env/builds/composer-php7.2
+  composer56:
+    build: env/builds/composer-php5.6
     volumes:
       - ./:/app
-    command: composer install
-
-  testunit:
-    build: env/builds/php7.2
+    command: php -v
+    
+  testunit56:
+    build: env/builds/php5.6
     volumes:
       - ./:/app
     command: php vendor/bin/phpunit -c phpunit.xml

@@ -1,4 +1,4 @@
-FROM php:7.2-alpine
+FROM php:5.6-alpine
 
 RUN apk --no-cache add git subversion openssh mercurial tini bash patch
 
