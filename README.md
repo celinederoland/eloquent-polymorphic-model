@@ -132,3 +132,18 @@ class Man extends Person {
 ## Complex queries, relations, etc.
 
 You can use all other functionality of Eloquent models like usual. In particular, you can define relations and complex queries as needed.
+
+# Contribute
+
+Fork the project in your github account
+
+Composer install
+````bash
+sh composer.sh install
+````
+
+Test
+```bash
+docker-compose up testunit
+```
+
